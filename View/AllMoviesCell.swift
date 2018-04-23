@@ -11,4 +11,6 @@ import UIKit
 class AllMoviesCell: UICollectionViewCell {
     
     @IBOutlet weak var filmImage: UIImageView!
+    @IBOutlet weak var blurEffect: UIVisualEffectView!
+    @IBOutlet weak var filmName: UILabel!
 }

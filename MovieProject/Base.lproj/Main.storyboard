@@ -52,6 +52,25 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NaO-GS-WEe">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         </imageView>
+                                        <visualEffectView opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lRf-s7-Pa6">
+                                            <rect key="frame" x="0.0" y="112" width="200" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="E1d-mR-Vgb">
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L9I-cj-qxk">
+                                                        <rect key="frame" x="31" y="14" width="122" height="28"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </view>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <blurEffect style="light"/>
+                                        </visualEffectView>
                                     </subviews>
                                 </view>
                                 <color key="backgroundColor" red="0.16980568254910422" green="0.20381708778664032" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -62,7 +81,9 @@
                                     <constraint firstItem="NaO-GS-WEe" firstAttribute="top" secondItem="MmL-tC-IXj" secondAttribute="top" id="quH-9B-GVD"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="blurEffect" destination="lRf-s7-Pa6" id="eGD-9L-972"/>
                                     <outlet property="filmImage" destination="NaO-GS-WEe" id="RnL-XQ-MIZ"/>
+                                    <outlet property="filmName" destination="L9I-cj-qxk" id="4N0-MM-hWS"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -75,7 +96,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iJB-k5-sFj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1164" y="-1012"/>
+            <point key="canvasLocation" x="-1164" y="-1012.4437781109445"/>
         </scene>
         <!--Favorites Movies-->
         <scene sceneID="BmO-pc-o5O">

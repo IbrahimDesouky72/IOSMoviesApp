@@ -7,23 +7,62 @@
 //
 
 import UIKit
+import Alamofire
 
 private let reuseIdentifier = "Cell"
 fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
 
-class AllMovies: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-
+class AllMovies: UICollectionViewController, UICollectionViewDelegateFlowLayout , AllMoviesPrtocol {
+    var movies : [MovieClass] = [MovieClass]()
+    
+    
+    
+    func updateIU(moviesList: [MovieClass]) {
+        movies = moviesList
+        print(movies.count)
+        print("here update ui /movies.count/")
+        self.collectionView?.reloadData()
+    }
+    
+    
+    var movieResult = MovieResults()
     override func viewDidLoad() {
         super.viewDidLoad()
+        let presenter : AllMoviesPresenterProtocol = AllMoviesPresenterClass(with : self)
+        
+        presenter.getAllMovies(movieType: 0)
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
         //self.collectionView!.register(AllMoviesCell, forCellWithReuseIdentifier: reuseIdentifier)
-        self.collectionView!.backgroundColor = .green
+        //self.collectionView!.backgroundColor = .green
         
-    print ("heloooooooo")
+//        Alamofire.request("https://api.themoviedb.org/3/search/movie?api_key=f6def6aa687f88e2c4bdac26cc09ee44&query=action").responseJSON{ (response) in
+//            //print(response)
+//
+//            let jsonData = response.data
+//            do{
+//                self.movieResult = try JSONDecoder().decode(MovieResults.self, from: jsonData!)
+//                self.movies = self.movieResult.results
+//
+//                for movie in self.movies {
+//                    print (movie.id)
+//                }
+//
+//
+//            } catch {
+//                print("error")
+//            }
+//
+//            }
+        
+            
+        
+        
+    //print ("heloooooooo")
 
         // Do any additional setup after loading the view.
     }
@@ -47,13 +86,13 @@ class AllMovies: UICollectionViewController, UICollectionViewDelegateFlowLayout 
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 5
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 2
+        return movies.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -61,7 +100,8 @@ class AllMovies: UICollectionViewController, UICollectionViewDelegateFlowLayout 
     
         // Configure the cell
         
-        cell.backgroundColor = .red
+        //cell.backgroundColor = .red
+        cell.filmName.text = movies[indexPath.row].original_title
 
         cell.filmImage.image = UIImage(named: "animal.png")!
         return cell
@@ -129,6 +169,8 @@ class AllMovies: UICollectionViewController, UICollectionViewDelegateFlowLayout 
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
+    
+    
     
 
 }
